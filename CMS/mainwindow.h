@@ -22,6 +22,7 @@ private slots:
     void changeComView(QModelIndex index);
     void removeComFromComModel();
     void searchSlot();
+    void search1Slot();
     void returnSlot();
     void addNewSlot();
     void addNewToTable();
@@ -37,6 +38,7 @@ private:
     QListWidget *showList;
     QListWidgetItem *item;
     QLineEdit *seLineEdit;
+    QLineEdit *se1LineEdit;
     QLineEdit *idLineEdit;
     QLineEdit *categoryLineEdit;
     QLineEdit *nameLineEdit;

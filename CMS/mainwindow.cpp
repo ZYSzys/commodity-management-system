@@ -55,25 +55,30 @@ QGroupBox* MainWindow::createDetailGroup()
 
     QPushButton *deleteBtn = new QPushButton(tr("delete"));
     QPushButton *addBtn = new QPushButton(tr("add"));
-    QPushButton *searchBtn = new QPushButton(tr("search"));
+    QPushButton *searchBtn = new QPushButton(tr("search by name"));
+    QPushButton *search1Btn = new QPushButton(tr("search by category"));
     QPushButton *returnBtn = new QPushButton(tr("return"));
     QPushButton *quitBtn = new QPushButton(tr("quit"));
 
     connect(deleteBtn, SIGNAL(clicked(bool)), this, SLOT(removeComFromComModel()));
     connect(addBtn, SIGNAL(clicked(bool)), this, SLOT(addNewSlot()));
     connect(searchBtn, SIGNAL(clicked(bool)), this, SLOT(searchSlot()));
+    connect(search1Btn, SIGNAL(clicked(bool)), this, SLOT(search1Slot()));
     connect(returnBtn, SIGNAL(clicked(bool)), this, SLOT(returnSlot()));
     connect(quitBtn, SIGNAL(clicked(bool)), this, SLOT(quitBtnSlot()));
 
     seLineEdit = new QLineEdit;
+    se1LineEdit = new QLineEdit;
     QGridLayout *layout = new QGridLayout;
     layout->addWidget(showList, 0, 0, 3, 2);
     layout->addWidget(deleteBtn, 3, 0, 1, 1);
     layout->addWidget(addBtn, 3, 1, 1, 1);
     layout->addWidget(seLineEdit, 4, 0, 1, 1);
     layout->addWidget(searchBtn, 4, 1, 1, 1);
-    layout->addWidget(returnBtn, 5, 0, 1, 1);
-    layout->addWidget(quitBtn, 5, 1, 1, 1);
+    layout->addWidget(se1LineEdit, 5, 0, 1, 1);
+    layout->addWidget(search1Btn, 5, 1, 1, 1);
+    layout->addWidget(returnBtn, 6, 0, 1, 1);
+    layout->addWidget(quitBtn, 6, 1, 1, 1);
 
     box->setLayout(layout);
     return box;
@@ -123,6 +128,19 @@ void MainWindow::searchSlot()
         comModel->setFilter(QObject::tr("name = '%1'").arg(name));
         comModel->select();
         seLineEdit->clear();
+    }
+    else
+        return;
+}
+//按category查找
+void MainWindow::search1Slot()
+{
+    QString category = se1LineEdit->text();
+    if(!category.isEmpty())
+    {
+        comModel->setFilter(QObject::tr("category = '%1'").arg(category));
+        comModel->select();
+        se1LineEdit->clear();
     }
     else
         return;
