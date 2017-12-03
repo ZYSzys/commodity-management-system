@@ -56,14 +56,14 @@ void DbConnect::createDB()
     }
 
     QSqlQuery q;
-    bool success = q.exec("create table commodity(id int primary key, category varchar(40), name varchar(40), origin varchar(40), count int, price double, quality varchar(40))");
+    bool success = q.exec("create table commodity(id int primary key, category varchar(40), name varchar(40), origin varchar(40), count int, price double, quality varchar(40), exp varchar(40))");
     if(success)
     {
         qDebug() << QObject::tr("Create commodity table successfully!");
     }
-    q.exec(QObject::tr("insert into commodity values(1,'Food','Water','Hangzhou',10,2.0,'High')"));
-    q.exec(QObject::tr("insert into commodity values(2,'Food','Milk','Hangzhou',10,7.0,'High')"));
-    q.exec(QObject::tr("insert into commodity values(3,'Food','Apple','Hangzhou',10,10.0,'High')"));
+    q.exec(QObject::tr("insert into commodity values(1,'Food','Water','Hangzhou',10,2.0,'High','12 months')"));
+    q.exec(QObject::tr("insert into commodity values(2,'Food','Milk','Hangzhou',10,7.0,'High','7 days')"));
+    q.exec(QObject::tr("insert into commodity values(3,'Food','Apple','Hangzhou',10,10.0,'High','1 week')"));
 }
 
 void DbConnect::on_cancel_clicked()

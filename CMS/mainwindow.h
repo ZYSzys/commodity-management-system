@@ -44,6 +44,7 @@ private:
     QLineEdit *countLineEdit;
     QLineEdit *priceLineEdit;
     QLineEdit *qualityLineEdit;
+    QLineEdit *expLineEdit;
 };
 
 #endif // MAINWINDOW_H

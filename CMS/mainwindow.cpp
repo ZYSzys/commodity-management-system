@@ -92,7 +92,8 @@ void MainWindow::changeComView(QModelIndex index)
     int count = record.value("count").toInt();
     double price = record.value("price").toDouble();
     QString quality = record.value("quality").toString();
-    item->setText(tr("ID: %1\nCategory: %2\nName: %3\nOrigin: %4\nCount: %5\nPrice: %6\nQuality: %7\n").arg(comId).arg(category).arg(name).arg(origin).arg(count).arg(price).arg(quality));
+    QString exp = record.value("exp").toString();
+    item->setText(tr("ID: %1\nCategory: %2\nName: %3\nOrigin: %4\nCount: %5\nPrice: %6\nQuality: %7\nExp: %8\n").arg(comId).arg(category).arg(name).arg(origin).arg(count).arg(price).arg(quality).arg(exp));
 }
 
 void MainWindow::removeComFromComModel()
@@ -152,6 +153,7 @@ void MainWindow::addNewSlot()
     QLabel *countLabel = new QLabel(tr("Count: "));
     QLabel *priceLabel = new QLabel(tr("Price: "));
     QLabel *qualityLabel = new QLabel(tr("Quality"));
+    QLabel *expLabel = new QLabel(tr("Exp"));
 
     idLineEdit = new QLineEdit;
     categoryLineEdit = new QLineEdit;
@@ -160,6 +162,7 @@ void MainWindow::addNewSlot()
     countLineEdit = new QLineEdit;
     priceLineEdit = new QLineEdit;
     qualityLineEdit = new QLineEdit;
+    expLineEdit = new QLineEdit;
 
     QGridLayout *layout = new QGridLayout;
     layout->addWidget(idLabel, 0, 0, 1, 1);
@@ -176,8 +179,10 @@ void MainWindow::addNewSlot()
     layout->addWidget(priceLineEdit, 5, 1, 1, 1);
     layout->addWidget(qualityLabel, 6, 0, 1, 1);
     layout->addWidget(qualityLineEdit, 6, 1, 1, 1);
-    layout->addWidget(submitBtn, 7, 0, 1, 1);
-    layout->addWidget(cancelBtn, 7, 1, 1, 1);
+    layout->addWidget(expLabel, 7, 0, 1, 1);
+    layout->addWidget(expLineEdit, 7, 1, 1, 1);
+    layout->addWidget(submitBtn, 8, 0, 1, 1);
+    layout->addWidget(cancelBtn, 8, 1, 1, 1);
 
     box->setLayout(layout);
     QGridLayout *mainLayout = new QGridLayout;
@@ -195,8 +200,9 @@ void MainWindow::addNewToTable()
     int count = countLineEdit->text().toInt();
     double price = priceLineEdit->text().toDouble();
     QString quality = qualityLineEdit->text();
+    QString exp = expLineEdit->text();
 
-    qDebug() << id << category << name << origin << count << price;
+    qDebug() << id << category << name << origin << count << price << quality << exp;
     QSqlRecord record;
     QSqlField f1("id", QVariant::Int);
     QSqlField f2("category", QVariant::String);
@@ -205,6 +211,7 @@ void MainWindow::addNewToTable()
     QSqlField f5("count", QVariant::Int);
     QSqlField f6("price", QVariant::Double);
     QSqlField f7("quality", QVariant::String);
+    QSqlField f8("exp", QVariant::String);
 
     f1.setValue(QVariant(id));
     f2.setValue(QVariant(category));
@@ -213,6 +220,7 @@ void MainWindow::addNewToTable()
     f5.setValue(QVariant(count));
     f6.setValue(QVariant(price));
     f7.setValue(QVariant(quality));
+    f8.setValue(QVariant(exp));
 
     record.append(f1);
     record.append(f2);
@@ -221,6 +229,7 @@ void MainWindow::addNewToTable()
     record.append(f5);
     record.append(f6);
     record.append(f7);
+    record.append(f8);
 
     comModel->insertRecord(-1, record);
     comModel->setSort(0, Qt::AscendingOrder);
@@ -242,6 +251,7 @@ void MainWindow::clearSlot()
     countLineEdit->clear();
     priceLineEdit->clear();
     qualityLineEdit->clear();
+    expLineEdit->clear();
 }
 
 void MainWindow::quitBtnSlot()
