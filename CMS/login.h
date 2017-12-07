@@ -13,15 +13,12 @@ public:
     Login(QWidget *parent = 0);
     ~Login();
 
-protected:
-    void changeEvent(QEvent *e);
-
 private:
     Ui::Login *ui;
 
 private slots:
-    void on_pushButton_2_clicked();
-    void on_pushButton_clicked();
+    void on_pushButton_2_clicked();//登录槽函数
+    void on_pushButton_clicked();//取消槽函数
 };
 
 #endif // LOGIN_H

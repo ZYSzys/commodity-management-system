@@ -12,6 +12,7 @@
 MainWindow::MainWindow(const QString &commodityTable, QWidget *parent):
     QMainWindow(parent)
 {
+    //商品数据表模型
     comModel = new QSqlTableModel(this);
     comModel->setTable(commodityTable);
     comModel->select();
@@ -29,13 +30,13 @@ MainWindow::MainWindow(const QString &commodityTable, QWidget *parent):
     resize(850, 400);
 }
 
-QGroupBox* MainWindow::createComGroup()
+QGroupBox* MainWindow::createComGroup()//左边组合框
 {
     comView = new QTableView;
-    comView->setEditTriggers(QAbstractItemView::NoEditTriggers);
-    comView->setSortingEnabled(true);
-    comView->setSelectionBehavior(QAbstractItemView::SelectRows);
-    comView->setSelectionMode(QAbstractItemView::SingleSelection);
+    comView->setEditTriggers(QAbstractItemView::NoEditTriggers);//设置为不可编辑状态
+    comView->setSortingEnabled(true);//开启排序
+    comView->setSelectionBehavior(QAbstractItemView::SelectRows);//每次选择，选一行
+    comView->setSelectionMode(QAbstractItemView::SingleSelection);//单击选择
     comView->setShowGrid(true);
     comView->setAlternatingRowColors(true);
     comView->setModel(comModel);
@@ -48,7 +49,7 @@ QGroupBox* MainWindow::createComGroup()
     return box;
 }
 
-QGroupBox* MainWindow::createDetailGroup()
+QGroupBox* MainWindow::createDetailGroup()//右边细节组合框
 {
     QGroupBox *box = new QGroupBox(tr("Detail"));
     showList = new QListWidget;
@@ -83,12 +84,12 @@ QGroupBox* MainWindow::createDetailGroup()
     box->setLayout(layout);
     return box;
 }
-
+//当选中一行时，改变视图，右侧列表框显示详细信息
 void MainWindow::changeComView(QModelIndex index)
 {
     showList->clear();
     item = new QListWidgetItem(showList);
-
+    //获取选中行数据表中的数据并分离出来
     QSqlRecord record = comModel->record(index.row());
     int comId = record.value("id").toInt();
     QString category = record.value("category").toString();
@@ -107,7 +108,7 @@ void MainWindow::removeComFromComModel()
 
     if(!select.empty())
     {
-        QModelIndex idIndex = select.at(0);
+        QModelIndex idIndex = select.at(0);//得到选中行的id索引
         QString name = idIndex.sibling(idIndex.row(), 2).data().toString();
         QMessageBox::StandardButton button;
         button = QMessageBox::question(this, tr("Delete"), QString(tr("Are you sure to delete '%1' information?").arg(name)), QMessageBox::Yes|QMessageBox::No);
@@ -208,7 +209,7 @@ void MainWindow::addNewSlot()
     dialog->setLayout(mainLayout);
     dialog->show();
 }
-
+//将新数据添加到数据库中
 void MainWindow::addNewToTable()
 {
     int id = idLineEdit->text().toInt();
@@ -250,7 +251,7 @@ void MainWindow::addNewToTable()
     record.append(f8);
 
     comModel->insertRecord(-1, record);
-    comModel->setSort(0, Qt::AscendingOrder);
+    comModel->setSort(0, Qt::AscendingOrder);//设置升序排列
     comModel->select();
     clearSlot();
 }

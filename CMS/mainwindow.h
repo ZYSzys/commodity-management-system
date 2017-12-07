@@ -18,17 +18,17 @@ public:
     MainWindow(const QString &commodityTable, QWidget *parent = 0);
     ~MainWindow();
 
-private slots:
-    void changeComView(QModelIndex index);
-    void removeComFromComModel();
-    void searchSlot();
-    void search1Slot();
-    void returnSlot();
-    void addNewSlot();
-    void addNewToTable();
-    void cancelBtnSlot();
-    void clearSlot();
-    void quitBtnSlot();
+private slots://槽函数
+    void changeComView(QModelIndex index);//定位选择的行，并在右边list中显示出来
+    void removeComFromComModel();//删除记录
+    void searchSlot();//按name查找
+    void search1Slot();//按category查找
+    void returnSlot();//返回列表
+    void addNewSlot();//添加按钮，创建添加记录的对话框
+    void addNewToTable();//添加新记录到数据库
+    void cancelBtnSlot();//添加对话框中的取消按钮
+    void clearSlot();//清空行编辑(LineEdit)内容
+    void quitBtnSlot();//退出程序
 
 private:
     QGroupBox *createComGroup();
@@ -37,6 +37,7 @@ private:
     QTableView *comView;
     QListWidget *showList;
     QListWidgetItem *item;
+
     QLineEdit *seLineEdit;
     QLineEdit *se1LineEdit;
     QLineEdit *idLineEdit;
