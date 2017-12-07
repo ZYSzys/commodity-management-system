@@ -13,7 +13,7 @@ DbConnect::DbConnect(QWidget *parent):
     ui->setupUi(this);
     QStringList drivers = QSqlDatabase::drivers();
     ui->dbComboBox->addItems(drivers);
-    ui->status_Label->setText(tr("Connecting to database"));
+    ui->status_Label->setText(tr("状态:"));
 }
 
 DbConnect::~DbConnect()
@@ -62,8 +62,10 @@ void DbConnect::createDB()
         qDebug() << QObject::tr("Create commodity table successfully!");
     }
     q.exec(QObject::tr("insert into commodity values(1,'Food','Water','Hangzhou',10,2.0,'High','12 months')"));
-    q.exec(QObject::tr("insert into commodity values(2,'Food','Milk','Hangzhou',10,7.0,'High','7 days')"));
+    q.exec(QObject::tr("insert into commodity values(2,'Food','Milk','Hangzhou',20,7.0,'High','7 days')"));
     q.exec(QObject::tr("insert into commodity values(3,'Food','Apple','Hangzhou',10,10.0,'High','1 week')"));
+    q.exec(QObject::tr("insert into commodity values(4,'Digital','iPhone','America',50,7000,'High','12 months')"));
+    q.exec(QObject::tr("insert into commodity values(5,'Book','C++ Primer','Beijing',100,99.99,'High','1 week')"));
 }
 
 void DbConnect::on_cancel_clicked()

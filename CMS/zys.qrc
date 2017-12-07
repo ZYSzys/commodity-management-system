@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/">
+        <file>zys.png</file>
+    </qresource>
+</RCC>

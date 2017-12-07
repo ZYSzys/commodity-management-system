@@ -26,12 +26,21 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
-    dbconnect.cpp
+    dbconnect.cpp \
+    login.cpp
 
 HEADERS += \
         mainwindow.h \
-    dbconnect.h
+    dbconnect.h \
+    login.h
 
 FORMS += \
         mainwindow.ui \
-    dbconnect.ui
+    dbconnect.ui \
+    login.ui
+
+DISTFILES +=
+
+RESOURCES += \
+    zys.qrc
+
