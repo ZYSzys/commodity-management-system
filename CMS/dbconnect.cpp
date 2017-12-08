@@ -69,6 +69,8 @@ void DbConnect::createDB()
     q.exec(QObject::tr("insert into commodity values(6,'Food','Coffee','Hangzhou',1000,10.0,'High','6 months')"));
     q.exec(QObject::tr("insert into commodity values(7,'Digital','Macbook','America',50,10000,'High','24 months')"));
     q.exec(QObject::tr("insert into commodity values(8,'Book','Thinking in Java','Beijing',500,49.99,'High','1 week')"));
+    q.exec(QObject::tr("insert into commodity values(9,'Book','C Primer Plus','Beijing',500,69.9,'High','1 week')"));
+    q.exec(QObject::tr("insert into commodity values(10,'Software','Office','Microsoft',200,159,'High','30 days')"));
 }
 
 void DbConnect::on_cancel_clicked()
