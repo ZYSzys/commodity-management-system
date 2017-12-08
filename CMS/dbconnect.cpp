@@ -61,16 +61,16 @@ void DbConnect::createDB()
     {
         qDebug() << QObject::tr("Create commodity table successfully!");
     }
-    q.exec(QObject::tr("insert into commodity values(1,'Food','Water','Hangzhou',10,2.0,'High','12 months')"));
-    q.exec(QObject::tr("insert into commodity values(2,'Food','Milk','Hangzhou',20,7.0,'High','7 days')"));
-    q.exec(QObject::tr("insert into commodity values(3,'Food','Apple','Hangzhou',10,10.0,'High','1 week')"));
-    q.exec(QObject::tr("insert into commodity values(4,'Digital','iPhone','America',50,7000,'High','12 months')"));
-    q.exec(QObject::tr("insert into commodity values(5,'Book','C++ Primer','Beijing',100,99.99,'High','1 week')"));
-    q.exec(QObject::tr("insert into commodity values(6,'Food','Coffee','Hangzhou',1000,10.0,'High','6 months')"));
-    q.exec(QObject::tr("insert into commodity values(7,'Digital','Macbook','America',50,10000,'High','24 months')"));
-    q.exec(QObject::tr("insert into commodity values(8,'Book','Thinking in Java','Beijing',500,49.99,'High','1 week')"));
-    q.exec(QObject::tr("insert into commodity values(9,'Book','C Primer Plus','Beijing',500,69.9,'High','1 week')"));
-    q.exec(QObject::tr("insert into commodity values(10,'Software','Office','Microsoft',200,159,'High','30 days')"));
+    q.exec(QObject::tr("insert into commodity values(1,'Food','Water','Hangzhou',10,2.0,'A','12 months')"));
+    q.exec(QObject::tr("insert into commodity values(2,'Food','Milk','Hangzhou',20,7.0,'A','7 days')"));
+    q.exec(QObject::tr("insert into commodity values(3,'Food','Apple','Hangzhou',10,10.0,'A','1 week')"));
+    q.exec(QObject::tr("insert into commodity values(4,'Digital','iPhone','America',50,7000,'A','12 months')"));
+    q.exec(QObject::tr("insert into commodity values(5,'Book','C++ Primer','Beijing',100,99.99,'A','1 week')"));
+    q.exec(QObject::tr("insert into commodity values(6,'Food','Coffee','Hangzhou',1000,10.0,'A','6 months')"));
+    q.exec(QObject::tr("insert into commodity values(7,'Digital','Macbook','America',50,10000,'A','24 months')"));
+    q.exec(QObject::tr("insert into commodity values(8,'Book','Thinking in Java','Beijing',500,49.99,'A','1 week')"));
+    q.exec(QObject::tr("insert into commodity values(9,'Book','C Primer Plus','Beijing',500,69.9,'A','1 week')"));
+    q.exec(QObject::tr("insert into commodity values(10,'Software','Office','Microsoft',200,159,'A','30 days')"));
 }
 
 void DbConnect::on_cancel_clicked()
