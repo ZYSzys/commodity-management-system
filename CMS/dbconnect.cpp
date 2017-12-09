@@ -38,7 +38,7 @@ void DbConnect::on_submit_clicked()//连接槽函数
         QMessageBox::information(this, tr("SQL"), tr("Sorry, only QSQLITE avaliable!"));
     }
 }
-//创建数据库文件commodity.db并插入了5条记录初始化
+//创建数据库文件commodity.db并插入了10条记录初始化
 void DbConnect::createDB()
 {
     QSqlError err;
