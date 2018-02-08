@@ -1,5 +1,4 @@
 language: cpp
-os: osx
 compiler: clang
 script:
   - cd CMS
@@ -8,4 +7,3 @@ script:
   - echo >> CMS.pro 'QT += widgets'
   - echo >> CMS.pro 'QT += sql'  
   - make
-  - open CMS.app
